@@ -32,7 +32,10 @@ def add_package_json
   "react": "^16.8.6",
   "react-dom": "^16.8.6",
   "react-router-dom": "^5.1.2",
-  "react-scripts": "^3.4.0"
+  "react-scripts": "^3.4.0",
+  "redux": "^4.0.5",
+  "redux-thunk": "^2.3.0",
+  "jwt-decode": "^2.2.0",
 },
 "scripts": {
   "start": "PORT=7001 react-scripts start",
