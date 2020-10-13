@@ -35,7 +35,7 @@ def add_package_json
   "react-scripts": "^3.4.0",
   "redux": "^4.0.5",
   "redux-thunk": "^2.3.0",
-  "jwt-decode": "^2.2.0",
+  "jwt-decode": "^2.2.0"
 },
 "scripts": {
   "start": "PORT=7001 react-scripts start",
