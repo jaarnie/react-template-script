@@ -4,12 +4,12 @@ puts 'Please enter the project name'
 PROJECT_NAME = gets.chomp
 
 def start
-  system "npx create-react-app #{PROJECT_NAME}"
+  system "npx create-react-app #{PROJECT_NAME}-client"
   add_package_json
 end
 
 def add_package_json
-  Dir.chdir("#{Dir.pwd}/#{PROJECT_NAME}") do
+  Dir.chdir("#{Dir.pwd}/#{PROJECT_NAME}-client") do
     File.open('package.json', 'r+') do |f|
       f << <<~HEREDOC
         {
@@ -29,8 +29,8 @@ def add_package_json
   "history": "^4.10.1",
   "notistack": "^0.9.5",
   "prop-types": "^15.7.2",
-  "react": "^16.8.6",
-  "react-dom": "^16.8.6",
+  "react": "^17.0.1",
+  "react-dom": "^17.0.1",
   "react-router-dom": "^5.1.2",
   "react-scripts": "^3.4.0",
   "redux": "^4.0.5",
@@ -68,12 +68,12 @@ def add_package_json
 end
 
 def install_packages
-  Dir.chdir("#{Dir.pwd}/#{PROJECT_NAME}") { system 'npm i' }
+  Dir.chdir("#{Dir.pwd}/#{PROJECT_NAME}-client") { system 'npm i --legacy-peer-deps' }
   add_react_customisations
 end
 
 def add_react_customisations
-  Dir.chdir("#{Dir.pwd}/#{PROJECT_NAME}/src") do
+  Dir.chdir("#{Dir.pwd}/#{PROJECT_NAME}-client/src") do
     system 'mkdir constants containers config components'
     system 'touch Store.js'
     system 'touch .env'
@@ -157,7 +157,7 @@ end
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1'
